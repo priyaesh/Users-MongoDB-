@@ -15,9 +15,12 @@ describe('Reading users out of the database',() => {
     it('find all users with a name of Hv',(done) =>{
         user.find({name:'Hv'})
             .then((users) => {
+                
+                assert(users[0]._id.toString() === Hv._id.toString());
                 console.log(users);
                 done();
-            })
+                //this.timeout(10000);
+            });
 
     });
 });
