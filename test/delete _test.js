@@ -13,33 +13,41 @@ describe ('Deleting a user',() =>{
 
     it('model instace remove',(done) =>{
         Hv.remove()
-            .then(() => 
-                user.findOne({ name: 'Hv'}))
+            .then(() => user.findOne({ name: 'Hv'}))
             .then((users) => {
                 assert(users === null);
                 done();
-                // this.timeout(500);
-                // setTimeout(done, 300);
-            
         });
     
     });
 
 
-    // it('class remove', (done) =>{
-    //     user.remove({name: 'Hv'})
-    //         .then(() => user.findOne({ name: 'Hv'}))
-    //         .then((user) => {
-    //             asssert(user === null);
-    //             done();
-    //         });
-    // });
+    it('class method remove', (done) =>{
+        user.remove({name: 'Hv'})
+            .then(() => user.findOne({ name: 'Hv'}))
+            .then((users) => {
+                assert(users === null);
+                done();
+            });
+    });
 
-    it('find id and remove',() =>{
+    it('find by name and remove',(done) =>{
+        user.findOneAndRemove({name: 'Hv'})
+            .then(() => user.findOne({ name: 'Hv'}))
+            .then((users) => {
+                assert(users === null);
+                done();
+            });  
 
     });
 
-    it('find by name and remove',() =>{
+    it('find by id and remove',() =>{
+        user.findByIdAndRemove(Hv._id)
+            .then(() => user.findOne({ name: 'Hv'}))
+            .then((users) => {
+                assert(users === null);
+                done();
+            });
 
     });
 });

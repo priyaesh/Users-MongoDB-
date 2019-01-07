@@ -1,15 +1,15 @@
 const assert = require('assert');
-const users = require('../src/user');
+const user = require('../src/user');
 
 
 
-describe('Create Users', () =>{
-    it('save the Users',(done)=>{
-        const Hv = new users({name : 'Hv'});
+describe('Create users', () =>{
+    it('save the users',(done)=>{
+        const Hv = new user({name : 'Hv'});
        
         Hv.save()
             .then(() =>{
-                assert(!    Hv.isNew);
+                assert(!Hv.isNew);
                 done();
             })
         
