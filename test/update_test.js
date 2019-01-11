@@ -2,11 +2,11 @@ const assert = require('assert');
 const user = require('../src/user');
 
 describe('Updating records', () =>{
-    let Hv;
+    let Hamsa;
 
     beforeEach((done) => {
-        Hv =new user({name:'Hv'})
-        Hv.save()
+        Hamsa =new user({name:'Hamsa'},{postCount:0})
+        Hamsa.save()
             .then(() => done());
     });
 
@@ -20,34 +20,49 @@ function assertName(operation, done){
     });
 }
     it('instance type using set and save', (done) => {
-        Hv.set('name','Hamsavardini');
-        assertName(Hv.save(),done)  
+        Hamsa.set('name','Hamsavardini');
+        assertName(Hamsa.save(),done)  
         });
     
     it('A model instance can update', (done) => {
-        assertName(Hv.update({name:'Hamsavardini'}),done);
+        assertName(Hamsa.update({name:'Hamsavardini'}),done);
     });
     it('A model can update',(done)  =>{
         assertName(
-            user.update({name:'Hv'},{name:'Hamsavardini'}),
+            user.update({name:'Hamsa'},{name:'Hamsavardini'}),
             done
             );
 
     });
     it('A model class update in one record',(done) => {
        assertName(
-            user.findOneAndUpdate({name:'Hv'},{name:'Hamsavardini'}),
+            user.findOneAndUpdate({name:'Hamsa'},{name:'Hamsavardini'}),
             done
        );
     });
 
     it('A model class can find a record with an id and update',(done) => {
         assertName(
-            user.findByIdAndUpdate(Hv._id,{name:'Hamsavardini'}),
+            user.findByIdAndUpdate(Hamsa._id, {name:'Hamsavardini'}),
             done
         );
     });
-});
+    it('A user can increment the postCount by 1 ', (done) =>{
+        user.update({name:'Hamsa'}, {$inc: {postCount:1}})
+            .then(() => user.findOne({name:'Hamsa'}))
+            .then((user) => {
+                assert(user.postCount===1);
+                done();
+                });
+            });
+        });
+        
+
+       
+        
+    
+    
+
 
 
 

@@ -5,11 +5,11 @@ const user = require('../src/user');
 
 describe('Create users', () =>{
     it('save the users',(done)=>{
-        const Hv = new user({name : 'Hv'});
+        const Hamsa = new user({name : 'Hamsa'});
        
-        Hv.save()
+        Hamsa.save()
             .then(() =>{
-                assert(!Hv.isNew);
+                assert(!Hamsa.isNew);
                 done();
             })
         
