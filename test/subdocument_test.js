@@ -1,5 +1,5 @@
 const assert = require('assert');
-//const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const user = require('../src/user');
 
 describe('subdocuments', () => {

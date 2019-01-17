@@ -17,7 +17,11 @@ const UserSchema = new Schema({
     
     //post: [{type : mongoose.Schema.Types.ObjectId,ref:'post'}]
     posts: [PostSchema],
-    likes: Number
+    likes: Number,
+    blogPosts: [{
+        type: Schema.Types.ObjectId,
+        ref: 'blogPost'
+    }]
 });
 
 UserSchema.virtual('postCount').get(function(){
