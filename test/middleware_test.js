@@ -15,7 +15,7 @@ describe('Middleware',() =>{
                 .then(() =>done());
         });
     
-it.only('user cleanup dangaling blogpost on remove', (done)=>{
+it('user cleanup dangaling blogpost on remove', (done)=>{
     joe.remove()
         .then(()=>BlogPost.count())
         .then((count)=>{

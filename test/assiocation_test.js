@@ -31,7 +31,7 @@ describe('assiocation',() =>{
                     done();
                 });
             });
-        it.only('saves full relation graph',(done)=>{
+        it('saves full relation graph',(done)=>{
             user.findOne({name:'joe'})
                 .populate({
                     path: 'blogPosts',

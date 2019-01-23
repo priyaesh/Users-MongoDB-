@@ -21,7 +21,7 @@ function assertName(operation, done){
 }
     it('instance type using set and save', (done) => {
         Hamsa.set('name','Hamsavardini');
-        assertName(Hamsa.save(),done)  
+        assertName(Hamsa.save(),done());
         });
     
     it('A model instance can update', (done) => {
@@ -31,8 +31,7 @@ function assertName(operation, done){
         assertName(
             user.update({name:'Hamsa'},{name:'Hamsavardini'}),
             done
-            );
-
+        );
     });
     it('A model class update in one record',(done) => {
        assertName(

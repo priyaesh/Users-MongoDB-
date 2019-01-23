@@ -3,20 +3,24 @@ const user = require('../src/user');
 
 
 describe('Reading users out of the database',() => {
-    let Hamsa;
+    let hamsa,moulesh,megna,maya;
      
     beforeEach((done) => {
-        Hamsa = new user({name:'Hamsa'});
-        Hamsa.save()
-            .then(() => done());
+        hamsa = new user({name:'Hamsa'});
+        moulesh = new user({name:'Moulesh'});
+        megna = new user({name:'Megna'});
+        maya = new user ({name:'Maya'});
 
-    });
+            Promise.all([hamsa.save(),moulesh.save(),megna.save(),maya.save()])
+                .then(()=>done());
+        
+           });
 
-    it('find all users with a name of Hamsa',(done) =>{
+    it('find all users with a name of hamsa',(done) =>{
         user.find({name:'Hamsa'})
             .then((users) => {
                 
-                assert(users[0]._id.toString() === Hamsa._id.toString());
+                assert(users[0]._id.toString() === hamsa._id.toString());
                 console.log(users);
                 done();
                 //this.timeout(10000);
@@ -25,9 +29,9 @@ describe('Reading users out of the database',() => {
     });
 
     it ('find a user with a particular id',(done) => {
-        user.findOne({ _id: Hamsa._id})
-            .then((user) => {
-                assert(user.name === 'Hamsa');
+        user.findOne({ _id: hamsa._id})
+            .then((userHamsa) => {
+                assert(userHamsa.name === 'Hamsa');
                 done();
                 
             });
