@@ -5,15 +5,15 @@ const user = require('../src/user');
 
 describe('Create users', () =>{
     it('save the users',(done)=>{
-        const Hamsa = new user({name : 'Hamsa'});
-       
-        Hamsa.save()
+        const hamsa = new user({name : "Hamsa"});
+
+        hamsa.save()
             .then(() =>{
-                assert(!Hamsa.isNew);
+                assert(!hamsa.isNew);
                 done();
             })
         
-
+        done();
 
     });
 });
